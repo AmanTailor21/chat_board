@@ -1,3 +1,4 @@
+import 'package:chat_board/Class/chat_user.dart';
 import 'package:chat_board/modules/chat_details_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,16 @@ class _chatuserlistState extends State<chatuserlist> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return chatdetailspage();
-        }));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return chatdetailspage();
+              },
+              settings: RouteSettings(
+                arguments: chatuser(text:widget.text,image: widget.image,secondtext: widget.secontext)
+              ),
+            ));
       },
       child: Container(
         padding: EdgeInsets.only(left: 16, right: 16, top: 5, bottom: 10),
